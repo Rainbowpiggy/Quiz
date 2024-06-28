@@ -31,7 +31,7 @@ list_questions_answers = [
 ]
 
 # The list of acceptable answers for yes/no
-yes_parameters = ["yes", "ok", "yeah", "yup", "yea", "sure"]
+yes_parameters = ["yes", "ok", "yeah", "yup", "yea", "sure", "maybe"]
 no_parameters = ["no", "nope", "nah", "no thanks", "na"]
 
 def run_quiz(list_questions_answers):
@@ -39,12 +39,16 @@ def run_quiz(list_questions_answers):
     user = Player(input("What is your name?\n"), 0)
     print(f"Welcome {user.name} to the Whale Rider Quiz.\n")
 
+    # Valid answer choices
+    valid_choices = ['a', 'b', 'c', 'd']
+
     # Ask all the questions in the quiz until it reaches the end
     for quiz in list_questions_answers:
         while True:
             user_answer = input(quiz.question).lower().strip()
-            if len(user_answer) > 30 or len(user_answer) == 0:
-                print(f"Incorrect, The answer was: {quiz.answer}\n")
+            # Validate the user answer
+            if len(user_answer) == 0 or len(user_answer) > 1 or user_answer not in valid_choices:
+                print("Please enter a valid input (a, b, c, or d)\n")
                 continue
             else:
                 break
