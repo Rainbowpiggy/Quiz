@@ -39,15 +39,15 @@ def run_quiz(list_questions_answers):
     user = Player(input("What is your name?\n"), 0)
     print(f"Welcome {user.name} to the Whale Rider Quiz.\n")
 
-    # Valid answer choices
-    valid_choices = ['a', 'b', 'c', 'd']
+    #constant
+    VALID_CHOICES = ['a', 'b', 'c', 'd']
 
     # Ask all the questions in the quiz until it reaches the end
     for quiz in list_questions_answers:
         while True:
             user_answer = input(quiz.question).lower().strip()
             # Validate the user answer
-            if len(user_answer) == 0 or len(user_answer) > 1 or user_answer not in valid_choices:
+            if len(user_answer) == 0 or len(user_answer) > 1 or user_answer not in VALID_CHOICES:
                 print("Please enter a valid input (a, b, c, or d)\n")
                 continue
             else:
